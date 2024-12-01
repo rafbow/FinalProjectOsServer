@@ -1,5 +1,7 @@
 # Final Project OS Server Dan Admin
 
+OS : [ubuntu-22.04.5-live-server-amd64.iso](https://releases.ubuntu.com/jammy/ubuntu-22.04.5-live-server-amd64.iso)
+
 ## List Server
 - Install Apache - Web Server
 - Install 
