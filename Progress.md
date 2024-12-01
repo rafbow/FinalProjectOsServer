@@ -24,7 +24,7 @@ sudo apt install apache2
 # Periksa status Apache2
 sudo systemctl status apache2
 ```
-![Alt text](Folder ScreenShot\Status Apache_1.png)
+![Status Apache_1](https://github.com/user-attachments/assets/fa9b33d8-dae0-4bf1-a7f5-b3c7c86503f8)
 
 ## 3. Konfigurasi Firewall
 ```bash
@@ -40,9 +40,7 @@ sudo ufw enable
 # Periksa status firewall
 sudo ufw status
 ```
-
-![Alt text](Folder ScreenShot\Ufw Set_1.png)
-
+![Ufw Set_1](https://github.com/user-attachments/assets/4be3d63a-296e-444a-b5ff-ff431b944db2)
 
 ## 4. Membuat Virtual Host Sederhana
 ```bash
@@ -139,5 +137,4 @@ sudo systemctl restart apache2
 
 ## 9. Testing
 - Akses website melalui browser: `http://your_server_ip`
-![Alt text](Folder ScreenShot\Final_Apache.png)
-
+![Final_Apache](https://github.com/user-attachments/assets/aa6625b7-5e23-4c11-851b-850f739b25d1)
