@@ -1,4 +1,4 @@
-### Final Project OS Server Dan Admin
+# Final Project OS Server Dan Admin
 
 ## List Server
 - Install Apache - Web Server
@@ -7,16 +7,16 @@
 - Install
 - install
 
-## Apache
+# Apache
 
-# 1. Update
+## 1. Update
 ```bash
 # Update repository dan sistem
 sudo apt update
 sudo apt upgrade
 ```
 
-# 2. Instalasi Apache2
+## 2. Instalasi Apache2
 ```bash
 # Install Apache2
 sudo apt install apache2
@@ -24,10 +24,9 @@ sudo apt install apache2
 # Periksa status Apache2
 sudo systemctl status apache2
 ```
-![screenshot](Folder ScreenShot\Status Apache_1.png)
+![Alt text](Folder ScreenShot\Status Apache_1.png)
 
-
-# 3. Konfigurasi Firewall
+## 3. Konfigurasi Firewall
 ```bash
 # Izinkan lalu lintas HTTP (port 80)
 sudo ufw allow 'Apache'
@@ -42,10 +41,10 @@ sudo ufw enable
 sudo ufw status
 ```
 
-![screenshot](Folder ScreenShot\Ufw Set_1.png)
+![Alt text](Folder ScreenShot\Ufw Set_1.png)
 
 
-# 4. Membuat Virtual Host Sederhana
+## 4. Membuat Virtual Host Sederhana
 ```bash
 # Buat direktori untuk website
 sudo mkdir /var/www/srowol.com
@@ -105,7 +104,7 @@ isi dengan kode html :
 </html>
 ```
 
-# 5. Konfigurasi Virtual Host
+## 5. Konfigurasi Virtual Host
 ```bash
 # Buat file konfigurasi virtual host baru
 sudo nano /etc/apache2/sites-available/srowol.com.conf
@@ -123,7 +122,7 @@ Isi dengan konfigurasi berikut:
 </VirtualHost>
 ```
 
-# 6. Aktivasi Virtual Host
+## 6. Aktivasi Virtual Host
 ```bash
 # Aktifkan virtual host
 sudo a2ensite contoh.com.conf
@@ -140,5 +139,5 @@ sudo systemctl restart apache2
 
 ## 9. Testing
 - Akses website melalui browser: `http://your_server_ip`
-![screenshot](Folder ScreenShot\Final_Apache.png)
+![Alt text](Folder ScreenShot\Final_Apache.png)
 
