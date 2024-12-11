@@ -1,142 +1,69 @@
 # Final Project OS Server Dan Admin
 
+# Sistem Manajemen Cafe
+Sistem manajemen cafe berbasis web untuk mencatat pemasukan dan pengeluaran cafe menggunakan Ubuntu Server.
+
 OS : [ubuntu-22.04.5-live-server-amd64.iso](https://releases.ubuntu.com/jammy/ubuntu-22.04.5-live-server-amd64.iso)
 
-## List Server
-- Install Apache - Web Server
-- Install 
-- Install
-- Install
-- install
+## Komponen Sistem
+Sistem ini menggunakan beberapa layanan server:
+1. Apache2 - Web Server
+2. MySQL - Database Server
+3. PHP - Backend Programming
+4. vsftpd - FTP Server
+5. BIND9 - DNS Server
 
-# Apache
+## Prasyarat Sistem
+- Ubuntu Server 22.04 LTS
+- RAM minimal 2GB
+- Storage minimal 20GB
+- Koneksi internet untuk instalasi paket
+- Port yang perlu dibuka:
+  - 80 (HTTP)
+  - 443 (HTTPS)
+  - 21 (FTP)
+  - 53 (DNS)
+  - 3306 (MySQL)
 
-## 1. Update
+## Instalasi
+
+### 1. Update Sistem
 ```bash
-# Update repository dan sistem
 sudo apt update
-sudo apt upgrade
+sudo apt upgrade -y
 ```
 
-## 2. Instalasi Apache2
+### 2. Instalasi Apache2
 ```bash
-# Install Apache2
-sudo apt install apache2
-
-# Periksa status Apache2
-sudo systemctl status apache2
+sudo apt install apache2 -y
+sudo systemctl start apache2
+sudo systemctl enable apache2
 ```
-![Status Apache_1](https://github.com/user-attachments/assets/fa9b33d8-dae0-4bf1-a7f5-b3c7c86503f8)
 
-## 3. Konfigurasi Firewall
+### 3. Instalasi MySQL
 ```bash
-# Izinkan lalu lintas HTTP (port 80)
-sudo ufw allow 'Apache'
-
-# Izinkan HTTPS jika diperlukan (port 443)
-sudo ufw allow 'Apache Full'
-
-# Aktifkan firewall
-sudo ufw enable
-
-# Periksa status firewall
-sudo ufw status
+sudo apt install mysql-server -y
+sudo mysql_secure_installation
+sudo systemctl start mysql
+sudo systemctl enable mysql
 ```
-![Ufw Set_1](https://github.com/user-attachments/assets/4be3d63a-296e-444a-b5ff-ff431b944db2)
 
-## 4. Membuat Virtual Host Sederhana
+### 4. Instalasi PHP
 ```bash
-# Buat direktori untuk website
-sudo mkdir /var/www/srowol.com
-
-# Atur kepemilikan direktori
-sudo chown -R $USER:$USER /var/www/srowol.com
-
-# Atur permission
-sudo chmod -R 755 /var/www/srowol.com
-
-# Buat halaman web sederhana
-sudo nano /var/www/srowol.com/index.html
-```
-isi dengan kode html :
-```html
-<!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <title>Arti Nama Rafi</title>
-</head>
-<body>
-    <h1>Mengenal Nama Rafi</h1>
-    
-    <h2>Asal-Usul Nama</h2>
-    <p>Rafi adalah nama yang berasal dari bahasa Arab (رفيع) yang memiliki arti yang sangat indah.</p>
-    
-    <h3>Makna Nama Rafi:</h3>
-    <ul>
-        <li>Tinggi atau luhur</li>
-        <li>Terhormat</li>
-        <li>Mulia</li>
-        <li>Terangkat derajatnya</li>
-    </ul>
-
-    <h2>Karakteristik Umum Penyandang Nama Rafi</h2>
-    <p>Orang dengan nama Rafi sering dikaitkan dengan sifat-sifat:</p>
-    <ul>
-        <li>Memiliki jiwa kepemimpinan yang kuat</li>
-        <li>Cerdas dan bijaksana dalam mengambil keputusan</li>
-        <li>Memiliki kepribadian yang hangat dan bersahabat</li>
-        <li>Pekerja keras dan bertanggung jawab</li>
-    </ul>
-
-    <h2>Variasi Penulisan</h2>
-    <p>Nama Rafi memiliki beberapa variasi penulisan, di antaranya:</p>
-    <ul>
-        <li>Rafi</li>
-        <li>Rafie</li>
-        <li>Rafy</li>
-        <li>Rafi'i</li>
-        <li>Rafii</li>
-    </ul>
-
-    <p><strong>Catatan:</strong> Nama Rafi sangat populer di berbagai negara Muslim dan sering digunakan sebagai nama pertama untuk anak laki-laki.</p>
-</body>
-</html>
-```
-
-## 5. Konfigurasi Virtual Host
-```bash
-# Buat file konfigurasi virtual host baru
-sudo nano /etc/apache2/sites-available/srowol.com.conf
-```
-
-Isi dengan konfigurasi berikut:
-```apache
-<VirtualHost *:80>
-    ServerAdmin webmaster@srowol.com
-    ServerName srowol.com
-    ServerAlias www.srowol.com
-    DocumentRoot /var/www/srowol.com
-    ErrorLog ${APACHE_LOG_DIR}/error.log
-    CustomLog ${APACHE_LOG_DIR}/access.log combined
-</VirtualHost>
-```
-
-## 6. Aktivasi Virtual Host
-```bash
-# Aktifkan virtual host
-sudo a2ensite contoh.com.conf
-
-# Nonaktifkan konfigurasi default (opsional)
-sudo a2dissite 000-default.conf
-
-# Periksa konfigurasi Apache
-sudo apache2ctl configtest
-
-# Restart Apache2
+sudo apt install php libapache2-mod-php php-mysql -y
 sudo systemctl restart apache2
 ```
 
-## 9. Testing
-- Akses website melalui browser: `http://your_server_ip`
-![Final_Apache](https://github.com/user-attachments/assets/aa6625b7-5e23-4c11-851b-850f739b25d1)
+### 5. Instalasi vsftpd
+```bash
+sudo apt install vsftpd -y
+sudo systemctl start vsftpd
+sudo systemctl enable vsftpd
+```
+
+### 6. Instalasi BIND9
+```bash
+sudo apt install bind9 bind9utils -y
+sudo systemctl start bind9
+sudo systemctl enable bind9
+```
