@@ -85,7 +85,6 @@ sudo systemctl enable mysql
 Skrip SQL akan membuat tabel berikut:
 - **pemasukan**: Menyimpan data pemasukan harian.
 - **pengeluaran**: Menyimpan data pengeluaran harian.
-- **users**: Menyimpan data pengguna untuk fitur login.
 
 ---
 
