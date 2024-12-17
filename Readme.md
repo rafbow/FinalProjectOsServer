@@ -1,32 +1,37 @@
 # Final Project OS Server Dan Admin
 
-# Sistem Manajemen Cafe
+## **1. Deskripsi**
 Sistem manajemen cafe berbasis web untuk mencatat pemasukan dan pengeluaran cafe menggunakan Ubuntu Server.
 
 OS : [ubuntu-22.04.5-live-server-amd64.iso](https://releases.ubuntu.com/jammy/ubuntu-22.04.5-live-server-amd64.iso)
 
-## Struktur Direktori Proyek**
+
+## **2. Struktur Direktori Proyek**
 
 Berikut adalah struktur direktori proyek:
 
 ```
 /cafe-management-system/
-├── login.php                  # Halaman login
-├── logout.php                 # Halaman logout
-├── index.php                  # Halaman utama (proteksi login)
-├── includes/                  # Folder untuk konfigurasi dan fungsi
+├── index.php                  # Halaman utama (frontend)
+├── includes/                  # Folder untuk file konfigurasi dan fungsi backend
 │   ├── config.php             # Konfigurasi koneksi database
-│   ├── functions.php          # Fungsi CRUD untuk pemasukan dan pengeluaran
-├── assets/                    # Folder untuk aset frontend
+│   ├── functions.php          # Fungsi CRUD dan laporan
+│   ├── income_api.php         # API untuk pemasukan (CRUD)
+│   ├── expense_api.php        # API untuk pengeluaran (CRUD)
+├── assets/                    # Folder untuk aset frontend (CSS, JS, gambar)
 │   ├── css/
-│   │   ├── style.css          # File CSS untuk styling
+│   │   ├── style.css          # File CSS tambahan untuk styling
+│   ├── js/
+│   │   ├── script.js          # File JavaScript untuk interaksi frontend
+│   ├── images/
+│       ├── logo.png           # Logo kafe atau gambar lain
 ├── sql/                       # Folder untuk file SQL
-    ├── database-config.sql    # Skrip pembuatan tabel dan data awal
+└────── database-config.sql    # Skrip untuk membuat tabel dan data awal
 ```
 
 ---
 
-## Prasyarat Sistem
+## **3. Prasyarat Sistem**
 
 Sebelum instalasi, pastikan perangkat Anda memenuhi persyaratan berikut:
 
@@ -34,12 +39,12 @@ Sebelum instalasi, pastikan perangkat Anda memenuhi persyaratan berikut:
 - **Web Server**: Apache2
 - **Database**: MySQL
 - **Bahasa Pemrograman**: PHP
-- **FTP Client**
-- **DNS Server (Opsional)**
+- **FTP Client**: FileZilla 
+- **DNS Server**: BIND9 untuk akses melalui domain
 
 ---
 
-## Instalasi Proyek
+## **4. Instalasi Proyek**
 
 ### **4.1 Instalasi Web Server, Database, dan PHP**
 Untuk sistem berbasis Linux (Ubuntu), jalankan perintah berikut:
@@ -53,7 +58,7 @@ sudo systemctl start mysql
 sudo systemctl enable mysql
 ```
 
-### Import Database
+### **4.2 Import Database**
 1. Buka terminal MySQL:
    ```bash
    mysql -u root -p
@@ -67,16 +72,21 @@ sudo systemctl enable mysql
    mysql -u root -p cafe_management < sql/database-config.sql
    ```
 
+Skrip SQL akan membuat tabel berikut:
+- **pemasukan**: Menyimpan data pemasukan harian.
+- **pengeluaran**: Menyimpan data pengeluaran harian.
+- **users**: Menyimpan data pengguna untuk fitur login.
+
 ---
 
-### Konfigurasi Koneksi Database
+### **4.3 Konfigurasi Koneksi Database**
 Edit file `includes/config.php` dan sesuaikan kredensial database:
 
 ```php
 <?php
 $db_host = 'localhost';
-$db_user = 'root';      // Ganti dengan user MySQL Anda
-$db_pass = '';          // Ganti dengan password MySQL Anda
+$db_user = 'root';      
+$db_pass = '';          
 $db_name = 'cafe_management';
 
 $conn = mysqli_connect($db_host, $db_user, $db_pass, $db_name);
@@ -89,7 +99,7 @@ if (!$conn) {
 
 ---
 
-### Konfigurasi FTP Server 
+### **4.4 Konfigurasi FTP Server**
 Jika Anda menggunakan **FTP Server** untuk mengelola file:
 
 1. Install **vsftpd**:
@@ -105,7 +115,7 @@ Jika Anda menggunakan **FTP Server** untuk mengelola file:
 
 ---
 
-### Konfigurasi DNS Server 
+### **4.5 Konfigurasi DNS Server (Opsional)**
 Jika Anda ingin mengakses aplikasi menggunakan domain seperti `cafe-management.local`:
 
 1. Install **BIND9**:
@@ -128,6 +138,23 @@ Jika Anda ingin mengakses aplikasi menggunakan domain seperti `cafe-management.l
      ```
 
 ---
+
+## **5. Panduan Penggunaan**
+
+Restart Apache dan MySQL Setelah menyiapkan semuanya, restart layanan web dan database:
+
+---
+sudo systemctl restart apache2
+sudo systemctl restart mysql
+---
+
+### Akses Aplikasi di Browser
+
+Buka browser dan akses aplikasi melalui URL:
+---
+http://localhost/cafe-management-system/index.php
+---
+
 
 ### Tampilan Web
 ![Screenshot 2024-12-17 015136](https://github.com/user-attachments/assets/52d37b56-f66b-46c8-b726-2ec77a309a0e)
