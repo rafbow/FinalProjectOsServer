@@ -21,15 +21,12 @@ Berikut adalah struktur direktori proyek:
 │   ├── css/
 │   │   ├── style.css          # File CSS untuk styling
 ├── sql/                       # Folder untuk file SQL
-│   ├── database-config.sql    # Skrip pembuatan tabel dan data awal
-├── install/                   # Folder untuk skrip instalasi
-│   ├── install-script.sh      # Skrip instalasi server dan database
-└── README.md                  # Dokumentasi proyek
+    ├── database-config.sql    # Skrip pembuatan tabel dan data awal
 ```
 
 ---
 
-## Prasyarat Sistem**
+## Prasyarat Sistem
 
 Sebelum instalasi, pastikan perangkat Anda memenuhi persyaratan berikut:
 
@@ -42,7 +39,7 @@ Sebelum instalasi, pastikan perangkat Anda memenuhi persyaratan berikut:
 
 ---
 
-## Instalasi Proyek**
+## Instalasi Proyek
 
 ### **4.1 Instalasi Web Server, Database, dan PHP**
 Untuk sistem berbasis Linux (Ubuntu), jalankan perintah berikut:
@@ -56,7 +53,7 @@ sudo systemctl start mysql
 sudo systemctl enable mysql
 ```
 
-### Import Database**
+### Import Database
 1. Buka terminal MySQL:
    ```bash
    mysql -u root -p
@@ -72,7 +69,7 @@ sudo systemctl enable mysql
 
 ---
 
-### Konfigurasi Koneksi Database**
+### Konfigurasi Koneksi Database
 Edit file `includes/config.php` dan sesuaikan kredensial database:
 
 ```php
@@ -131,3 +128,10 @@ Jika Anda ingin mengakses aplikasi menggunakan domain seperti `cafe-management.l
      ```
 
 ---
+
+### Tampilan Web
+![Screenshot 2024-12-17 015136](https://github.com/user-attachments/assets/52d37b56-f66b-46c8-b726-2ec77a309a0e)
+
+### FTP Server
+![Screenshot 2024-12-17 015044](https://github.com/user-attachments/assets/ac91f1ce-8849-4717-9d8b-eba0b57b5c9a)
+
