@@ -143,17 +143,17 @@ Jika Anda ingin mengakses aplikasi menggunakan domain seperti `cafe-management.l
 
 Restart Apache dan MySQL Setelah menyiapkan semuanya, restart layanan web dan database:
 
----
+```
 sudo systemctl restart apache2
 sudo systemctl restart mysql
----
+```
 
 ### Akses Aplikasi di Browser
 
 Buka browser dan akses aplikasi melalui URL:
----
+```
 http://localhost/cafe-management-system/index.php
----
+```
 
 
 ### Tampilan Web
