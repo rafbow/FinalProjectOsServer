@@ -33,15 +33,25 @@ Berikut adalah struktur direktori proyek:
 
 ## **3. Prasyarat Sistem**
 
-Sebelum instalasi, pastikan perangkat Anda memenuhi persyaratan berikut:
+### Komponen Sistem
+Sistem ini menggunakan beberapa layanan server:
+1. Apache2 - Web Server
+2. MySQL - Database Server
+3. PHP - Backend Programming
+4. vsftpd - FTP Server
+5. BIND9 - DNS Server
 
-- **Sistem Operasi**: Linux (Ubuntu) / Windows dengan XAMPP
-- **Web Server**: Apache2
-- **Database**: MySQL
-- **Bahasa Pemrograman**: PHP
-- **FTP Client**: FileZilla 
-- **DNS Server**: BIND9 untuk akses melalui domain
-
+### Operating System
+- Ubuntu Server 22.04 LTS
+- RAM minimal 2GB
+- Storage minimal 20GB
+- Koneksi internet untuk instalasi paket
+- Port yang perlu dibuka:
+  - 80 (HTTP)
+  - 443 (HTTPS)
+  - 21 (FTP)
+  - 53 (DNS)
+  - 3306 (MySQL)
 ---
 
 ## **4. Instalasi Proyek**
