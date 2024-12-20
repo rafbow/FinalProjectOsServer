@@ -94,8 +94,8 @@ Edit file `includes/config.php` dan sesuaikan kredensial database:
 ```php
 <?php
 $db_host = 'localhost';
-$db_user = 'root';      
-$db_pass = '';          
+$db_user = 'cafeman';
+$db_pass = 'password';
 $db_name = 'cafe_management';
 
 $conn = mysqli_connect($db_host, $db_user, $db_pass, $db_name);
