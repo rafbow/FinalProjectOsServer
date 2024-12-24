@@ -21,6 +21,7 @@ Berikut adalah struktur direktori proyek:
 │   ├── functions.php          # Fungsi CRUD dan laporan
 │   ├── income_api.php         # API untuk pemasukan (CRUD)
 │   ├── expense_api.php        # API untuk pengeluaran (CRUD)
+│   ├── settings_api.php       # API untuk pengaturan 
 ├── assets/                    # Folder untuk aset frontend (CSS, JS, gambar)
 │   ├── css/
 │   │   ├── style.css          # File CSS tambahan untuk styling
