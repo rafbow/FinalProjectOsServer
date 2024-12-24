@@ -1,5 +1,8 @@
 # Final Project OS Server Dan Admin
 
+## Nama : Muhammad Rafi Wibowo
+## NIM : 23.83.0966
+
 ## **1. Deskripsi**
 Sistem manajemen cafe berbasis web untuk mencatat pemasukan dan pengeluaran cafe menggunakan Ubuntu Server.
 
